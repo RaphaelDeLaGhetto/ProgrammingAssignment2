@@ -7,7 +7,7 @@
 ## `makeCacheMatrix` provides an object to serve as the cache.
 ##
 ## `cacheSolve` caches the value returned by `solve`
-## (in an object returned by `makeCacheMatrix`)
+## (i.e., in an object returned by `makeCacheMatrix`).
 ##
 
 ##
@@ -18,7 +18,7 @@
 ##
 makeCacheMatrix <- function(m = matrix()) {
 
-    # The cached inverted matrix
+    # Initialize the cached inverted matrix
     inverse <- NULL
 
     #
@@ -80,12 +80,12 @@ cacheSolve <- function(cache, ...) {
         return(inverse)
     }
 
-    # No cached value? Calculate the inverse of the
-    # matrix stored in the cache
+    # If we get here, there's no cached value. Calculate 
+    # the inverse of the matrix stored in the cache
     data <- cache$get()
     inverse <- solve(data, ...)
 
-    # Stash the inverse in cache and return
+    # Stash the inverse in the cache and return
     cache$setinverse(inverse)
     inverse
 }
